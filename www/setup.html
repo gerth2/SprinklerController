@@ -1,0 +1,36 @@
+<html>
+
+
+<head>
+    <title>Sprinkler Control Setup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" crossorigin="anonymous">
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <h1>SPRINKLER CONTROL SETUP</h1>
+    </div>
+    <div class="content">
+        <div class="cards">
+            <div class="card">
+                <p><i class="fa-solid fa-gear" style="color:#059e8a;"></i> NETWORK </p>
+                <p><span class="reading">
+                    <span id="Network">
+                        <form action='/connect' method='POST'>
+                            SSID: <input type='text' name='ssid' value=''><br>
+                            Password: <input type='password' name='password' value=''><br>
+                            <input type='submit' value='Connect'>
+                        </form>
+                    </span> 
+                </span></p>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

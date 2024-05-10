@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Sprinkler Control</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" crossorigin="anonymous">
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <h1>SPRINKLER CONTROL</h1>
+    </div>
+    <div class="content">
+        <div class="cards">
+            <div class="card">
+                <p><i class="fa-solid fa-clock" style="color:#059e8a;"></i> TIME </p>
+                <p><span class="reading"><span id="time">***</span> </span></p>
+            </div>
+            <div class="card">
+                <p><i class="fa-solid fa-gauge" style="color:#059e8a;"></i> MODE </p>
+                <p>
+                    <span class="reading">
+                        <span id="stateCmds">
+                            <button onclick="setCmdState('OFF')">OFF</button>
+                            <button onclick="setCmdState('AUTO')">AUTO</button>
+                            <button onclick="setCmdState('MANUAL')">MANUAL</button>
+                        </span>
+                    </span>
+                </p>
+            </div>
+            <div class="card">
+                <p><i class="fa-solid fa-umbrella" style="color:#059e8a;"></i> RAIN </p>
+                <p><span class="reading">SENSOR: <span id="rainSensorStatus">***</span> </span></p>
+                <p><span class="reading">INHIBIT: <span id="rainInhibitStatus">***</span> </span></p>
+            </div>
+        </div>
+        <br>
+        <div class="cards">
+
+            <div class="card">
+                <p><i class="fa-solid fa-faucet-drip" style="color:#059e8a;"></i> ZONES </p>
+                <p><span class="reading"><span id="time">
+                    <svg id="yard" width="500" height="500">
+
+                        <!-- House and concrete -->
+                        <rect class="bkgnd" x="0" y="0" width="500" height="500" />
+                        <rect class="house" x="75" y="226" width="326" height="96"  />
+                        <rect class="house" x="300" y="320" width="80"  height="180" />
+                        <rect class="house" x="0" y="430" width="298" height="14"  />
+                        <rect class="house" x="380" y="430" width="120" height="13"  />
+
+                        <!-- actual zones -->
+                        <rect class="zone" id="zone1" x="166" y="322" width="134" height="110"/>
+                        <rect class="zone" id="zone2" x="0" y="322" width="165" height="110"/>
+                        <rect class="zone" id="zone3" x="0" y="444" width="298" height="52"/>
+                        <rect class="zone" id="zone4" x="0" y="0"   width="194" height="226"/>
+                        <rect class="zone" id="zone5" x="194" y="0" width="206" height="226"/>
+                        <rect class="zone" id="zone6" x="402" y="0" width="98"  height="432"/>
+                        <rect class="zone" id="zone7" x="379" y="444" width="120" height="56"/>
+
+
+                    </svg>
+                </span> </span></p>
+            </div>
+        </div>
+
+    </div>
+    <script src="messaging.js"></script>
+    <script src="zoneCard.js"></script>
+</body>
+
+</html>
