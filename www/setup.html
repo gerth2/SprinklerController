@@ -22,11 +22,25 @@
                         <form action='/connect' method='POST'>
                             SSID: <input type='text' name='ssid' value=''><br>
                             Password: <input type='password' name='password' value=''><br>
-                            <input type='submit' value='Connect'>
+                            <input type='submit' value='Save'>
                         </form>
                     </span> 
                 </span></p>
             </div>
+
+            <div class="card">
+                <p><i class="fa-solid fa-gear" style="color:#059e8a;"></i> NETWORK </p>
+                <p><span class="reading">
+                    <span id="AUTO CYCLE">
+                        <form action='/settings' method='POST'>
+                            Cycle Start: <input type='time' name='cycle_start' value=''><br>
+                            Zone Dwell Duration (min): <input type='number' name='cycle_zone_duration' value=''><br>
+                            <input type='submit' value='Save'>
+                        </form>
+                    </span> 
+                </span></p>
+            </div>
+
         </div>
     </div>
 

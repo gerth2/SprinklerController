@@ -83,3 +83,22 @@ schedulerTime_t getCurTime(){
   return retVal;
 
 }
+
+String getCurTimeStr(){
+  schedulerTime_t curTime = getCurTime();
+
+    std::string period = "AM";
+    if (curTime.hour >= 12) {
+        period = "PM";
+        if (curTime.hour > 12) {
+            curTime.hour -= 12;
+        }
+    }
+    if (curTime.hour == 0) {
+        curTime.hour = 12; // 0 hour is equivalent to 12 AM
+    }
+
+    char buffer[30]; // Buffer to hold formatted time string (HH:MM:SS PP)
+    std::sprintf(buffer, "%d:%02d:%02d %s", curTime.hour, curTime.minute, curTime.second, period.c_str());
+    return String(buffer);
+}

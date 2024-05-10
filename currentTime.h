@@ -10,4 +10,4 @@ typedef struct {
 
 void syncTime();
 schedulerTime_t getCurTime();
-
+String getCurTimeStr();

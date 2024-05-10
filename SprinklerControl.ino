@@ -8,6 +8,8 @@
 #include "currentTime.h"
 #include "www.h"
 #include "wwwHandlers.h"
+#include "outputStateMachine.h"
+#include "commandStateMachine.h"
 
 const char *ssid = "SprinklerControlSetup";
 const uint8_t nvmVersion = 2;
@@ -137,22 +139,39 @@ void setup()
     Serial.println("HTTP server started");
 }
 
+void update_1000ms(){
+    // Send Events to the Web Client with the Sensor Readings
+    events.send("ping", NULL, millis());
+    events.send(getCurTimeStr().c_str(), "time", millis());
+}
+
+void update_250ms(){
+    csm_update();
+    osm_update();
+}
+
+
+///////////////////////////////////////////////////////
+// Worlds worst RTOS Implementation
+
 // Timer variables
-unsigned long lastTime = 0;
-unsigned long timerDelay = 1000;
+unsigned long lastTime1000ms = 0;
+unsigned long lastTime250ms = 0;
 
 void loop()
 {
-    if ((millis() - lastTime) > timerDelay)
+    unsigned long curTime = millis();
+    if ((curTime - lastTime1000ms) > 1000)
     {
-        auto curTime = getCurTime();
-        String currentTimeStr = String(curTime.hour) + ":" + String(curTime.minute) + ":" + String(curTime.second);
-        // Serial.printf("Time = %s \n", currentTimeStr);
+        update_1000ms();
+        lastTime1000ms = curTime;
+    }
 
-        // Send Events to the Web Client with the Sensor Readings
-        events.send("ping", NULL, millis());
-        events.send(String(currentTimeStr).c_str(), "time", millis());
-
-        lastTime = millis();
+    if ((curTime - lastTime250ms) > 250)
+    {
+        update_250ms();
+        lastTime250ms = curTime;
     }
 }
+
+

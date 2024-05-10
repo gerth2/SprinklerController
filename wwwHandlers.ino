@@ -1,5 +1,5 @@
 #include "wwwHandlers.h"
-#include "stateMachine.h"
+#include "commandStateMachine.h"
 
 void install_handlers(AsyncWebServer * server) {
 
@@ -7,11 +7,11 @@ void install_handlers(AsyncWebServer * server) {
     String action = request->getParam("state")->value();
     
     if(action == "OFF"){
-        setCmdState(STATE_OFF);
+        csm_setCmdState(STATE_OFF);
     } else if(action == "AUTO") {
-        setCmdState(STATE_AUTO);
+        csm_setCmdState(STATE_AUTO);
     } else if(action == "MANUAL") {
-        setCmdState(STATE_MANUAL);
+        csm_setCmdState(STATE_MANUAL);
     } else {
         Serial.println("Got unknown state command!");
     }
