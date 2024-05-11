@@ -10,6 +10,7 @@
 #include "wwwHandlers.h"
 #include "outputStateMachine.h"
 #include "commandStateMachine.h"
+#include "rainSensor.h"
 
 const char *ssid = "SprinklerControlSetup";
 const uint8_t nvmVersion = 2;
@@ -137,17 +138,26 @@ void setup()
 
     server.begin();
     Serial.println("HTTP server started");
+
+    rs_init();
+    osm_init();
+    csm_init();
 }
 
 void update_1000ms(){
     // Send Events to the Web Client with the Sensor Readings
     events.send("ping", NULL, millis());
     events.send(getCurTimeStr().c_str(), "time", millis());
+    events.send(rs_isInhibited()?"ACTIVE":"INACTIVE", "rainSensorInhibit", millis());
+    events.send(rs_isSensorWet()?"WET":"DRY", "rainSensorStatus", millis());
+    events.send(csm_getCurState()?"AUTO":"MANUAL", "curState", millis());
+
 }
 
 void update_250ms(){
     csm_update();
     osm_update();
+    rs_update();
 }
 
 

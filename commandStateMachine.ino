@@ -1,7 +1,12 @@
 #include "commandStateMachine.h"
+#include "outputStateMachine.h"
+
+uint8_t curStateCmd;
+uint8_t curState;
 
 void csm_setCmdState(uint8_t cmd){
-    Serial.printf("Got State %d\n", cmd); //todo actually something useful
+    Serial.printf("Got State Cmd %d\n", cmd); //todo actually something useful
+    curStateCmd = cmd;
 }
 
 void csm_requestManualZone(uint8_t zone){
@@ -20,4 +25,9 @@ void csm_init(){
 
 void csm_update(){
     //TODO
+    curState = curStateCmd;
+}
+
+uint8_t csm_getCurState(){
+    return curState;
 }

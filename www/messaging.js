@@ -18,8 +18,37 @@ source.addEventListener('time', function (e) {
     document.getElementById("time").innerHTML = e.data;
 }, false);
 
+source.addEventListener('rainSensorInhibit', function (e) {
+    console.log("rainSensorInhibit", e.data);
+    document.getElementById("rainInhibitStatus").innerHTML = e.data;
+}, false);
+
+source.addEventListener('rainSensorStatus', function (e) {
+    console.log("rainSensorStatus", e.data);
+    document.getElementById("rainSensorStatus").innerHTML = e.data;
+}, false);
+
+source.addEventListener('curState', function (e) {
+    console.log("curState", e.data);
+    document.getElementById("rainSensorStatus").innerHTML = e.data;
+}, false);
+
+
+
 function setCmdState(state) { 
     var xhr = new XMLHttpRequest(); 
     xhr.open('GET', '/setCmdState?state=' + state); 
+    xhr.send(); 
+}
+
+function requestZoneActive(zoneNumber) { 
+    var xhr = new XMLHttpRequest(); 
+    xhr.open('GET', '/requestZoneActive?zone=' + zoneNumber); 
+    xhr.send(); 
+}
+
+function requestAllOff() { 
+    var xhr = new XMLHttpRequest(); 
+    xhr.open('GET', '/requestAllOff'); 
     xhr.send(); 
 }
