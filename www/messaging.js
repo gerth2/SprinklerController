@@ -30,7 +30,7 @@ source.addEventListener('rainSensorStatus', function (e) {
 
 source.addEventListener('curState', function (e) {
     console.log("curState", e.data);
-    document.getElementById("rainSensorStatus").innerHTML = e.data;
+    document.getElementById("curState").innerHTML = e.data;
 }, false);
 
 

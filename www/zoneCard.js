@@ -1,14 +1,7 @@
-var zones = document.querySelectorAll('.zone');
-zones.forEach(zone => {
-    zone.addEventListener('click', function () {
-        var zoneId = this.id;
-        handleZoneClick(zoneId);
-    });
-});
 
 function handleZoneClick(zoneId) {
     console.log('Zone clicked:', zoneId);
-    requestZoneActive(zoneID.substring(4));
+    requestZoneActive(zoneId);
 }
 
 function handleAllOffClick() {

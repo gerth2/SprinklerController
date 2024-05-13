@@ -22,6 +22,7 @@
             <div class="card">
                 <p><i class="fa-solid fa-gauge" style="color:#059e8a;"></i> MODE </p>
                 <p>
+                    <p><span class="reading"><span id="curState">***</span> </span></p>
                     <span class="reading">
                         <span id="stateCmds">
                             <button onclick="setCmdState('AUTO')">AUTO</button>
@@ -43,27 +44,46 @@
                 <p><i class="fa-solid fa-faucet-drip" style="color:#059e8a;"></i> ZONES </p>
                 <p><span class="reading"><span id="time">
                     <svg id="yard" width="500" height="500">
-
                         <!-- House and concrete -->
                         <rect class="bkgnd" x="0" y="0" width="500" height="500" />
-                        <rect class="house" x="75" y="226" width="326" height="96"  />
-                        <rect class="house" x="300" y="320" width="80"  height="180" />
-                        <rect class="house" x="0" y="430" width="298" height="14"  />
-                        <rect class="house" x="380" y="430" width="120" height="13"  />
-
+                        <rect class="house" x="75" y="226" width="325" height="95" />
+                        <rect class="house" x="300" y="321" width="80" height="179" />
+                        <rect class="house" x="0" y="431" width="298" height="14" />
+                        <rect class="house" x="379" y="431" width="121" height="14" />
+                    
                         <!-- actual zones -->
-                        <rect class="zone" id="zone1" x="166" y="322" width="134" height="110"/>
-                        <rect class="zone" id="zone2" x="0" y="322" width="165" height="110"/>
-                        <rect class="zone" id="zone3" x="0" y="444" width="298" height="52"/>
-                        <rect class="zone" id="zone4" x="0" y="0"   width="194" height="226"/>
-                        <rect class="zone" id="zone5" x="194" y="0" width="206" height="226"/>
-                        <rect class="zone" id="zone6" x="402" y="0" width="98"  height="432"/>
-                        <rect class="zone" id="zone7" x="379" y="444" width="120" height="56"/>
-
-
+                        <g onclick="requestZoneActive(1)">
+                            <rect class="zone" id="zone1" x="166" y="321" width="134" height="110" />
+                            <text x="233" y="376" text-anchor="middle" alignment-baseline="middle" fill="black">Zone 1</text>
+                        </g>
+                        <g onclick="requestZoneActive(2)">
+                            <rect class="zone" id="zone2" x="0" y="321" width="165" height="110" />
+                            <text x="82.5" y="376" text-anchor="middle" alignment-baseline="middle" fill="black">Zone 2</text>
+                        </g>
+                        <g onclick="requestZoneActive(3)">
+                            <rect class="zone" id="zone3" x="0" y="431" width="299" height="56" />
+                            <text x="149.5" y="459" text-anchor="middle" alignment-baseline="middle" fill="black">Zone 3</text>
+                        </g>
+                        <g onclick="requestZoneActive(4)">
+                            <rect class="zone" id="zone4" x="0" y="0" width="194" height="226" />
+                            <text x="97" y="113" text-anchor="middle" alignment-baseline="middle" fill="black">Zone 4</text>
+                        </g>
+                        <g onclick="requestZoneActive(5)">
+                            <rect class="zone" id="zone5" x="194" y="0" width="207" height="226" />
+                            <text x="297.5" y="113" text-anchor="middle" alignment-baseline="middle" fill="black">Zone 5</text>
+                        </g>
+                        <g onclick="requestZoneActive(6)">
+                            <rect class="zone" id="zone6" x="401" y="0" width="99" height="431" />
+                            <text x="450.5" y="215.5" text-anchor="middle" alignment-baseline="middle" fill="black">Zone 6</text>
+                        </g>
+                        <g onclick="requestZoneActive(7)">
+                            <rect class="zone" id="zone7" x="379" y="431" width="121" height="69" />
+                            <text x="439.5" y="465.5" text-anchor="middle" alignment-baseline="middle" fill="black">Zone 7</text>
+                        </g>
                     </svg>
+                    
                 </span> </span></p>
-                <p><button onclick="setCmdState('OFF')">ALL OFF</button></p>
+                <p><button onclick="handleAllOffClick()">ALL OFF</button></p>
             </div>
         </div>
 

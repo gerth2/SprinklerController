@@ -23,8 +23,10 @@ void install_handlers(AsyncWebServer * server) {
     
     if(zoneIdx>= 1 and zoneIdx<=7){
         csm_requestManualZone(zoneIdx);
+        Serial.printf("Got zone %d activate command.\n", zoneIdx);
+
     } else {
-        Serial.println("Got unknown zone activate command!");
+        Serial.printf("Got unknown zone %d activate command!\n", zoneIdx);
     }
 
     request->send(200, "text/plain", String(zoneIdx));
@@ -33,7 +35,7 @@ void install_handlers(AsyncWebServer * server) {
   server->on("/requestAllOff", HTTP_GET, [](AsyncWebServerRequest *request){
     
     csm_requestAllOff();
-
+    Serial.printf("Got all-off command.\n");
     request->send(200, "text/plain", String(""));
   });
 
