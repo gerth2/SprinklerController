@@ -9,9 +9,9 @@ void rs_update(){
 }
 
 boolean rs_isInhibited(){
-    return false;
+    return false; //TODO actual value
 }
 
 boolean rs_isSensorWet(){
-    
+    return true; //TODO actual value
 }

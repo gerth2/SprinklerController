@@ -10,7 +10,7 @@ void csm_setCmdState(uint8_t cmd);
 void csm_requestManualZone(uint8_t zone);
 void csm_requestAllOff(void);
 
-uint8_t csm_getCurState();
+uint8_t csm_getCurState(void);
 
 // Periodic calls
 void csm_init();
